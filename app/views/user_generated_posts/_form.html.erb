@@ -1,0 +1,27 @@
+<%= form_for(user_generated_post) do |f| %>
+  <% if user_generated_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_generated_post.errors.count, "error") %> prohibited this user_generated_post from being saved:</h2>
+
+      <ul>
+      <% user_generated_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :privacy_setting %>
+    <%= f.check_box :privacy_setting %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text %>
+    <%= f.text_field :text %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

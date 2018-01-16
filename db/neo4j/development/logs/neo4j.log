@@ -1,0 +1,63 @@
+nohup: ignoring input
+2018-01-16 11:05:27.066+0000 INFO  ======== Neo4j 3.3.1 ========
+2018-01-16 11:05:27.092+0000 INFO  Starting...
+2018-01-16 11:05:28.333+0000 INFO  Bolt enabled on localhost:7472.
+2018-01-16 11:05:28.549+0000 ERROR Neo4j cannot be started because the database files require upgrading and upgrades are disabled in the configuration. Please set 'dbms.allow_upgrade' to 'true' in your configuration file and try again. Detailed description: The version you're upgrading to is using a new transaction log format. This is a non-reversible upgrade and you wont be able to downgrade after starting
+2018-01-16 11:05:28.550+0000 INFO  Neo4j Server shutdown initiated by request
+nohup: ignoring input
+2018-01-16 11:05:55.863+0000 INFO  ======== Neo4j 3.3.1 ========
+2018-01-16 11:05:55.888+0000 INFO  Starting...
+2018-01-16 11:05:56.539+0000 INFO  Bolt enabled on localhost:7472.
+2018-01-16 11:06:00.264+0000 ERROR Failed to start Neo4j: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@cf67838' was successfully initialized, but failed to start. Please see the attached cause exception "Address localhost:7472 is already in use, cannot bind to it.". Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@cf67838' was successfully initialized, but failed to start. Please see the attached cause exception "Address localhost:7472 is already in use, cannot bind to it.".
+org.neo4j.server.ServerStartupException: Starting Neo4j failed: Component 'org.neo4j.server.database.LifecycleManagingDatabase@cf67838' was successfully initialized, but failed to start. Please see the attached cause exception "Address localhost:7472 is already in use, cannot bind to it.".
+	at org.neo4j.server.exception.ServerStartupErrors.translateToServerStartupError(ServerStartupErrors.java:68)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:219)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:111)
+	at org.neo4j.server.ServerBootstrapper.start(ServerBootstrapper.java:79)
+	at org.neo4j.server.CommunityEntryPoint.main(CommunityEntryPoint.java:32)
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.server.database.LifecycleManagingDatabase@cf67838' was successfully initialized, but failed to start. Please see the attached cause exception "Address localhost:7472 is already in use, cannot bind to it.".
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:466)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.server.AbstractNeoServer.start(AbstractNeoServer.java:211)
+	... 3 more
+Caused by: java.lang.RuntimeException: Error starting org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory, /home/prankur/myapp/db/neo4j/development/data/databases/graph.db
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.initFacade(GraphDatabaseFacadeFactory.java:211)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.newFacade(GraphDatabaseFacadeFactory.java:126)
+	at org.neo4j.server.CommunityNeoServer.lambda$static$0(CommunityNeoServer.java:58)
+	at org.neo4j.server.database.LifecycleManagingDatabase.start(LifecycleManagingDatabase.java:88)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:445)
+	... 5 more
+Caused by: org.neo4j.kernel.lifecycle.LifecycleException: Component 'org.neo4j.bolt.transport.NettyServer@3f628ce9' was successfully initialized, but failed to start. Please see the attached cause exception "Address localhost:7472 is already in use, cannot bind to it.".
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:466)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:445)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.extension.KernelExtensions.start(KernelExtensions.java:84)
+	at org.neo4j.kernel.lifecycle.LifeSupport$LifecycleInstance.start(LifeSupport.java:445)
+	at org.neo4j.kernel.lifecycle.LifeSupport.start(LifeSupport.java:107)
+	at org.neo4j.kernel.impl.factory.GraphDatabaseFacadeFactory.initFacade(GraphDatabaseFacadeFactory.java:207)
+	... 9 more
+Caused by: org.neo4j.helpers.PortBindException: Address localhost:7472 is already in use, cannot bind to it.
+	at io.netty.channel.unix.Errors.newIOException(Errors.java:117)
+	at io.netty.channel.unix.Socket.bind(Socket.java:285)
+	at io.netty.channel.epoll.AbstractEpollChannel.doBind(AbstractEpollChannel.java:714)
+	at io.netty.channel.epoll.EpollServerSocketChannel.doBind(EpollServerSocketChannel.java:70)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:558)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1283)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:501)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:486)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:989)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:254)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:364)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.epoll.EpollEventLoop.run(EpollEventLoop.java:309)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at java.lang.Thread.run(Thread.java:748)
+2018-01-16 11:06:00.265+0000 INFO  Neo4j Server shutdown initiated by request
+nohup: ignoring input
+2018-01-16 13:59:08.140+0000 INFO  ======== Neo4j 3.3.1 ========
+2018-01-16 13:59:08.344+0000 INFO  Starting...
+2018-01-16 13:59:11.150+0000 INFO  Bolt enabled on localhost:7472.
+2018-01-16 13:59:17.848+0000 INFO  Started.
+2018-01-16 13:59:19.396+0000 INFO  Remote interface available at http://localhost:7474/

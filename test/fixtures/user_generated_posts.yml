@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  privacy_setting: false
+  text: 
+
+two:
+  privacy_setting: false
+  text: 

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Privacy setting:</strong>
+  <%= @user_generated_post.privacy_setting %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @user_generated_post.text %>
+</p>
+
+<%= link_to 'Edit', edit_user_generated_post_path(@user_generated_post) %> |
+<%= link_to 'Back', user_generated_posts_path %>
